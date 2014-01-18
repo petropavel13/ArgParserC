@@ -10,15 +10,9 @@ int indexOf(char* src, char key) {
   return -1;
 }
 
-int sizeofstr(char *str) {
-  int i = 0;
-  for(; str[i] != '\0'; i++);
-  return i;
-}
-
 char *substrFromIndex(char *src, int index) {
   int i = index;
-  char *str = (char *)malloc(sizeofstr(src) - index);
+  char *str = (char *)malloc(strlen(src) - index);
   int _i = 0;
   for(; src[i] != '\0'; i++) {
     str[_i] = src[i];
