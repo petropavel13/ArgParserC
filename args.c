@@ -3,31 +3,18 @@
 #include <string.h>
 
 int indexOf(char* src, char key) {
-  int i = 0;
-  for(; src[i] != '\0'; i++) {
-    if(src[i] == key) return i;
-  }
-  return -1;
+  char* c = strchr(src, key);
+  return c == NULL ? -1 : c - src;
 }
 
 char *substrFromIndex(char *src, int index) {
-  int i = index;
   char *str = (char *)malloc(strlen(src) - index);
-  int _i = 0;
-  for(; src[i] != '\0'; i++) {
-    str[_i] = src[i];
-    _i++;
-  }
-  return str;
+  return strcpy(str, &(src[index]));
 }
 
 char *substrUntil(char *src, int index) {
-  int i = 0;
   char *str = (char *)malloc(index);
-  for(; i < index; i++) {
-    str[i] = src[i];
-  }
-  return str;
+  return strncpy(str, src, index);
 }
 
 char *getArg(int argc, char** argv, char* key) {
